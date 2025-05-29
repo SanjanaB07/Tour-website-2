@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - Tour & Travel</title>
+    <link rel="stylesheet" href="./contact.css">
+    <script src="https://kit.fontawesome.com/0e53af926d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Progress Bar -->
+        <div class="booking-progress">
+            <a href="booking-step1.html" class="progress-step completed" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-text"></div>
+            </a>
+            <a href="booking-step2.html" class="progress-step completed" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-text"></div>
+            </a>
+            <a href="booking-step3.html" class="progress-step completed" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-text"></div>
+            </a>
+            <div class="progress-step active" data-step="4">
+                <div class="step-number">4</div>
+                <div class="step-text"></div>
+            </div>
+        </div>
+
+        <div class="confirmation-container">
+            <h1>Confirm Your Booking</h1>
+            
+            <!-- Booking Summary -->
+            <div class="summary-section">
+                <h2>Booking Summary</h2>
+                <div class="summary-content">
+                    <div class="summary-item">
+                        <h3>Reference Number</h3>
+                        <p id="bookingReference" class="highlight"></p>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <h3>Personal Details</h3>
+                        <div id="personalDetails"></div>
+                    </div>
+
+                    <div class="summary-item">
+                        <h3>Travel Plans</h3>
+                        <div id="travelDetails"></div>
+                    </div>
+
+                    <div class="summary-item">
+                        <h3>Vehicle Selection</h3>
+                        <div id="vehicleDetails"></div>
+                    </div>
+
+                    <div class="summary-item">
+                        <h3>Total Cost</h3>
+                        <p id="totalCost" class="highlight"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Details -->
+            <div class="company-section">
+                <h2>Company Details</h2>
+                <div class="company-details">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-building"></i>
+                            <div>
+                                <h4>Office Address</h4>
+                                <p>Tour & Travel House</p>
+                                <p>42, M.G. Road, Bangalore</p>
+                                <p>Karnataka - 560001</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Contact Numbers</h4>
+                                <p>Main: +91 123-456-7890</p>
+                                <p>Support: +91 098-765-4321</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>bookings@tourtravel.com</p>
+                                <p>support@tourtravel.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Working Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p>Saturday: 9:00 AM - 2:00 PM</p>
+                                <p>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="action-buttons">
+                <button type="button" id="confirmBtn" class="btn btn-primary" onclick="window.location.href='booking-success.html'">
+                    <i class="fas fa-check"></i> Confirm Booking
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./booking-step4.js"></script>
+</body>
+</html> 

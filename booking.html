@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Tour - Tour & Travel</title>
+    <link rel="stylesheet" href="./contact.css">
+    <script src="https://kit.fontawesome.com/0e53af926d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <section class="booking-header">
+            <h1>Book Your Tour</h1>
+            <h4>Plan your perfect journey with us</h4>
+        </section>
+
+        <div class="booking-container">
+            <div class="booking-intro">
+                <h2>Start Your Booking</h2>
+                <p>Complete your booking in 4 easy steps:</p>
+                
+                <div class="booking-steps-preview">
+                    <div class="step-preview">
+                        <i class="fas fa-user-circle"></i>
+                        <h3>1. Personal Details</h3>
+                        <p>Basic contact information</p>
+                    </div>
+                    <div class="step-preview">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>2. Travel Plans</h3>
+                        <p>Dates and group size</p>
+                    </div>
+                    <div class="step-preview">
+                        <i class="fas fa-car"></i>
+                        <h3>3. Vehicle Selection</h3>
+                        <p>Choose your transport</p>
+                    </div>
+                    <div class="step-preview">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>4. Confirmation</h3>
+                        <p>Review and confirm</p>
+                    </div>
+                </div>
+
+                <a href="booking-step1.html" class="start-booking-btn">
+                    Start Booking Now
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Clear any existing booking data when starting fresh
+        document.addEventListener('DOMContentLoaded', () => {
+            const startBtn = document.querySelector('.start-booking-btn');
+            startBtn.addEventListener('click', () => {
+                localStorage.removeItem('bookingData');
+            });
+        });
+    </script>
+</body>
+</html> 

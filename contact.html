@@ -1,44 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Tour & Travel</title>
     <link rel="stylesheet" href="./contact.css">
- 
-    
+    <script src="https://kit.fontawesome.com/0e53af926d.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-	<div class="row">
-			<h1>contact us</h1>
-	</div>
-	<div class="row">
-			<h4 style="text-align:center">We'd love to hear from you!</h4>
-	</div>
-	<div class="row input-container">
-			<div class="col-xs-12">
-				<div class="styled-input wide">
-					<input type="text" required />
-					<label>Name</label> 
-				</div>
-			</div>
-			<div class="col-md-6 col-sm-12">
-				<div class="styled-input">
-					<input type="text" required />
-					<label>Email</label> 
-				</div>
-			</div>
-			<div class="col-md-6 col-sm-12">
-				<div class="styled-input" style="float:right;">
-					<input type="text" required />
-					<label>Phone Number</label> 
-				</div>
-			</div>
-			<div class="col-xs-12">
-				<div class="styled-input wide">
-					<textarea required></textarea>
-					<label>Message</label>
-				</div>
-			</div>
-			<div class="col-xs-12">
-				<div class="btn-lrg submit-btn">Send Message</div>
-			</div>
-	</div>
-</div>
+    <div class="container">
+        <section class="contact-header">
+            <h1>Share Your Feedback</h1>
+            <h4>We value your opinion! Help us improve our services.</h4>
+            <a href="booking.html" class="booking-cta">
+                <i class="fas fa-calendar-alt"></i>
+                Make a Booking
+            </a>
+        </section>
+
+        <div class="contact-container">
+            <!-- Feedback Form Section -->
+            <section class="contact-form">
+                <form id="contactForm">
+                    <div class="row input-container">
+                        <div class="col-xs-12">
+                            <div class="styled-input wide">
+                                <input type="text" id="name" required />
+                                <label for="name">Name</label> 
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="styled-input wide">
+                                <input type="email" id="email" required />
+                                <label for="email">Email</label> 
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="styled-input wide">
+                                <textarea id="feedback" required></textarea>
+                                <label for="feedback">Your Feedback</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <button type="submit" class="submit-btn">Submit Feedback</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Company Contact Info -->
+            <section class="company-info">
+                <h2>Contact Us</h2>
+                <div class="info-items">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Corporate Office</h3>
+                            <p>Tour & Travel House<br>
+                            42, M.G. Road, Bangalore<br>
+                            Karnataka - 560001</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Call Us</h3>
+                            <p>Toll Free: 1800-425-4532<br>
+                            Customer Care: +91 80-4123-4567<br>
+                            WhatsApp: +91 98765-43210</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>Bookings: bookings@tourtravel.com<br>
+                            Support: help@tourtravel.com<br>
+                            Corporate: corporate@tourtravel.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Working Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 8:00 PM<br>
+                            Saturday: 9:00 AM - 6:00 PM<br>
+                            24/7 Online Support Available</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="./contact.js"></script>
 </body>
+</html>

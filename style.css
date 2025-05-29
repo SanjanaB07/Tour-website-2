@@ -1,16 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@300;400&display=swap');
 
+:root {
+    --lavender: #e4ddf4;         /* Light purple background */
+    --terra-cotta: #943d24;      /* Rust/brown accent */
+    --cream: #fffbf0;            /* Off-white background */
+    --charcoal: #2d2d2d;         /* Dark text color */
+    --olive: #282612;            /* Dark olive for contrast */
+    --white: #FFFFFF;            /* Pure white */
+    --gradient-warm: linear-gradient(135deg, #943d24, #282612);
+}
+
 *{
     margin: 0px; padding: 0px;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
-
 body{
     width: 100%;
-    background-color: #001721;
+    background-color: var(--cream);
     overflow-x: hidden;
+    color: var(--charcoal);
 }
 
 .flex-r{
@@ -30,8 +40,8 @@ body{
 .container{
     width: 100%;
     padding: 10px 10px;
-    background-color: #001721;
-    color: #fff;
+    background-color: var(--cream);
+    color: var(--charcoal);
 }
 
 nav{
@@ -39,12 +49,16 @@ nav{
     width: 100%;
     height: 10vh;
     position: relative;
+    background: var(--terra-cotta);
+    box-shadow: 0 2px 10px rgba(148, 61, 36, 0.1);
 }
 
 .nav-logo{
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 19px;
+    color: var(--cream);
+    font-weight: 600;
 }
 
 .ham{
@@ -73,11 +87,12 @@ nav{
     width: 90%;
     height: 79vh;
     padding: 30px;
-    background-color: white;
+    background-color: var(--white);
     gap: 15px 0px;
     transform: translateX(120%);
     opacity: 0;
     transition: all 0.3s cubic-bezier(1, -0.01, 0, 1.36);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 .menu.on{
     opacity: 1;
@@ -86,12 +101,12 @@ nav{
 
 .menu a{
     text-decoration: none;
-    color: #001721;
+    color: var(--charcoal);
     font-size: 35px;
     transition: all 0.2s linear;
 }
 .menu a:hover{
-    transform: translateX(10px);
+    color: var(--terra-cotta);
 }
 
 
@@ -114,13 +129,15 @@ main{
     font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: yellow;
+    color: var(--terra-cotta);
+    margin-bottom: 10px;
 }
 .m-head{
     font-size: 19px;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase;
+    color: var(--olive);
 }
 .para{
     font-size: 16px;
@@ -128,28 +145,29 @@ main{
     text-align: center;
     font-family: 'Poppins', sans-serif;
     max-width: 450px;
+    color: var(--charcoal);
+    line-height: 1.6;
 }
 
 .btn{
     border: none;
     outline: none;
-    padding: 10px 12px;
+    padding: 12px 24px;
     font-size: 17px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 600;
     cursor: pointer;
-    color: #001721;
-    border: 1px solid transparent;
-    transition: all 0.14s linear;
+    color: var(--cream);
+    background: var(--terra-cotta);
+    border-radius: 0;
+    transition: all 0.3s ease;
 }
 
-
 .btn:hover{
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
-    font-weight: 500;
+    background: var(--olive);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(40, 38, 18, 0.2);
 }
 
 
@@ -158,23 +176,71 @@ main{
 footer{
     gap: 10px 0px;
     height: 10vh;
+    background: var(--terra-cotta);
+    color: var(--cream);
 }
 
 .social-link{
     gap: 0px 25px;
 }
 .social-link a i{
-    color: #fff;
+    color: var(--cream);
     font-size: 25px;
     transition: all 0.2s linear;
 }
 
 .social-link a i:hover{
     transform: translateY(-7px);
+    color: var(--lavender);
 }
 
 .dev-info a{
-    color: #fff;
+    color: var(--cream);
+}
+
+.social-link a {
+    color: var(--cream);
+}
+
+.social-link a:hover {
+    color: var(--lavender);
+}
+
+.main-text {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    border: 1px solid var(--terra-cotta);
+}
+
+.main-img img {
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.1));
+}
+
+/* Special sections with gradient backgrounds */
+.special-section {
+    background: var(--cream);
+    padding: 40px 20px;
+    border-radius: 0;
+    margin: 20px 0;
+    border: 1px solid var(--terra-cotta);
+}
+
+/* Card styling */
+.card {
+    background: var(--white);
+    border-radius: 0;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--terra-cotta);
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
 
 
