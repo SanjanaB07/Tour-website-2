@@ -4,26 +4,34 @@ let messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
 // DOM Elements
 const form = document.getElementById('contactForm');
 const inputs = document.querySelectorAll('.styled-input input, .styled-input textarea');
+const successMessage = document.getElementById('successMessage');
 
 // Add floating label effect
 inputs.forEach(input => {
-    // Check if input has value on page load
+    // Set initial state for pre-filled inputs
     if (input.value) {
-        input.parentElement.classList.add('has-value');
+        input.classList.add('has-value');
     }
 
-    // Add events for floating labels
-    input.addEventListener('focus', () => {
-        input.parentElement.classList.add('focused');
+    // Handle input changes
+    input.addEventListener('input', function() {
+        if (this.value) {
+            this.classList.add('has-value');
+        } else {
+            this.classList.remove('has-value');
+        }
+        validateInput(this);
     });
 
-    input.addEventListener('blur', () => {
-        input.parentElement.classList.remove('focused');
-        if (input.value) {
-            input.parentElement.classList.add('has-value');
-        } else {
-            input.parentElement.classList.remove('has-value');
-        }
+    // Handle focus
+    input.addEventListener('focus', function() {
+        this.parentElement.classList.add('focused');
+    });
+
+    // Handle blur
+    input.addEventListener('blur', function() {
+        this.parentElement.classList.remove('focused');
+        validateInput(this);
     });
 });
 
@@ -60,7 +68,7 @@ function showNotification(message, type = 'success') {
     // Show notification
     setTimeout(() => notification.classList.add('show'), 100);
 
-    // Remove notification
+    // Remove notification after delay
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => notification.remove(), 300);
@@ -72,8 +80,7 @@ function validateForm() {
     let isValid = true;
     const name = document.getElementById('name');
     const email = document.getElementById('email');
-    const phone = document.getElementById('phone');
-    const message = document.getElementById('message');
+    const feedback = document.getElementById('feedback');
 
     // Simple email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -82,21 +89,14 @@ function validateForm() {
         isValid = false;
     }
 
-    // Phone validation (basic)
-    const phoneRegex = /^\+?[\d\s-]{10,}$/;
-    if (!phoneRegex.test(phone.value)) {
-        showInputError(phone, 'Please enter a valid phone number');
-        isValid = false;
-    }
-
-    // Name and message length validation
+    // Name and feedback length validation
     if (name.value.length < 2) {
         showInputError(name, 'Name must be at least 2 characters long');
         isValid = false;
     }
 
-    if (message.value.length < 10) {
-        showInputError(message, 'Message must be at least 10 characters long');
+    if (feedback.value.length < 10) {
+        showInputError(feedback, 'Feedback must be at least 10 characters long');
         isValid = false;
     }
 
@@ -206,20 +206,208 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Form submission handler
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', function(e) {
+form.addEventListener('submit', function(e) {
     e.preventDefault();
     
+    if (!validateForm()) {
+        return false;
+    }
+
     // Get form data
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const feedback = document.getElementById('feedback').value;
 
-    // Here you would typically send the data to a server
-    // For now, we'll just show a success message
-    showNotification('Feedback submitted! Thank you for your response.', 'success');
+    // Create new message object
+    const newMessage = {
+        name,
+        email,
+        feedback,
+        time: new Date().toLocaleString()
+    };
 
+    // Add to messages array
+    messages.unshift(newMessage);
+    if (messages.length > 10) messages.pop();
+
+    // Save to localStorage
+    localStorage.setItem('contactMessages', JSON.stringify(messages));
+
+    // Save contact info for pre-filling booking form
+    localStorage.setItem('contactInfo', JSON.stringify({
+        name: name,
+        email: email
+    }));
+
+    // Show success message
+    showNotification('Thank you for your feedback! Redirecting to booking page...');
+    
     // Reset form
-    contactForm.reset();
+    form.reset();
+    inputs.forEach(input => {
+        input.parentElement.classList.remove('has-value', 'focused');
+    });
+
+    // Redirect to booking page after a short delay
+    setTimeout(() => {
+        window.location.href = 'booking.html';
+    }, 2000);
+    
+    return false;
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    const inputs = contactForm.querySelectorAll('input, textarea, select');
+
+    // Add floating label effect
+    inputs.forEach(input => {
+        // Set initial state for pre-filled inputs
+        if (input.value) {
+            input.classList.add('has-value');
+        }
+
+        // Handle input changes
+        input.addEventListener('input', function() {
+            if (this.value) {
+                this.classList.add('has-value');
+            } else {
+                this.classList.remove('has-value');
+            }
+            validateInput(this);
+        });
+
+        // Handle focus
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+
+        // Handle blur
+        input.addEventListener('blur', function() {
+            this.parentElement.classList.remove('focused');
+            validateInput(this);
+        });
+    });
+
+    // Form validation
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let isValid = true;
+
+        // Validate all inputs
+        inputs.forEach(input => {
+            if (!validateInput(input)) {
+                isValid = false;
+            }
+        });
+
+        if (isValid) {
+            // Show loading state
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                // Hide form and show success message
+                contactForm.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Reset form for future use
+                contactForm.reset();
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                    contactForm.style.display = 'block';
+                }, 5000);
+            }, 1500);
+        }
+    });
+
+    function validateInput(input) {
+        const errorElement = input.parentElement.querySelector('.error-message');
+        let isValid = true;
+        let errorMessage = '';
+
+        // Clear previous error
+        input.classList.remove('invalid');
+        errorElement.style.display = 'none';
+        errorElement.textContent = '';
+
+        // Skip validation for optional fields if empty
+        if (!input.required && !input.value) {
+            return true;
+        }
+
+        // Validate based on input type
+        switch(input.type) {
+            case 'email':
+                if (!isValidEmail(input.value)) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid email address';
+                }
+                break;
+            
+            case 'tel':
+                if (input.value && !isValidPhone(input.value)) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid phone number';
+                }
+                break;
+            
+            case 'text':
+                if (input.id === 'name' && !isValidName(input.value)) {
+                    isValid = false;
+                    errorMessage = 'Name must be at least 2 characters long';
+                }
+                break;
+            
+            case 'textarea':
+                if (input.value.length < 10) {
+                    isValid = false;
+                    errorMessage = 'Message must be at least 10 characters long';
+                }
+                break;
+            
+            case 'select-one':
+                if (!input.value) {
+                    isValid = false;
+                    errorMessage = 'Please select an option';
+                }
+                break;
+        }
+
+        // Show error if validation failed
+        if (!isValid) {
+            input.classList.add('invalid');
+            errorElement.textContent = errorMessage;
+            errorElement.style.display = 'block';
+        }
+
+        return isValid;
+    }
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function isValidPhone(phone) {
+        return /^[\d\s+-]{10,15}$/.test(phone);
+    }
+
+    function isValidName(name) {
+        return name.length >= 2 && /^[A-Za-z\s]*$/.test(name);
+    }
+
+    // Smooth scroll for the "Send Message" button
+    document.querySelector('.scroll-to-form-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('#contact-form').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 }); 

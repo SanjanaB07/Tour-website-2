@@ -17,7 +17,13 @@ const confirmCancelBtn = document.getElementById('confirmCancelBtn');
 
 // Get booking reference from localStorage
 const bookingReference = localStorage.getItem('currentBookingReference');
-document.getElementById('bookingId').textContent = bookingReference;
+const bookingReferenceElement = document.getElementById('bookingReference');
+
+if (bookingReference) {
+    bookingReferenceElement.textContent = bookingReference;
+} else {
+    bookingReferenceElement.textContent = 'Not Available';
+}
 
 // Get booking details
 const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
@@ -490,60 +496,45 @@ function displayBookingDetails() {
     if (currentBooking) {
         const bookingSummary = document.getElementById('bookingSummary');
         if (bookingSummary) {
+            const duration = calculateDuration(currentBooking.travel.startDate, currentBooking.travel.endDate);
+            const totalGuests = parseInt(currentBooking.travel.adults) + parseInt(currentBooking.travel.children || 0);
+
             bookingSummary.innerHTML = `
                 <div class="summary-section">
                     <h3>Personal Details</h3>
-                    <p><strong>Name:</strong> ${currentBooking.personal?.name || 'N/A'}</p>
-                    <p><strong>Email:</strong> ${currentBooking.personal?.email || 'N/A'}</p>
-                    <p><strong>Phone:</strong> ${currentBooking.personal?.phone || 'N/A'}</p>
+                    <p><strong>Name:</strong> <span>${currentBooking.personal.fullName}</span></p>
+                    <p><strong>Email:</strong> <span>${currentBooking.personal.email}</span></p>
+                    <p><strong>Phone:</strong> <span>${currentBooking.personal.phone}</span></p>
                 </div>
                 <div class="summary-section">
                     <h3>Travel Details</h3>
-                    <p><strong>Start Date:</strong> ${formatDate(currentBooking.travel?.startDate)}</p>
-                    <p><strong>End Date:</strong> ${formatDate(currentBooking.travel?.endDate)}</p>
-                    <p><strong>Group Size:</strong> ${currentBooking.travel?.groupSize || 1} people</p>
+                    <p><strong>Duration:</strong> <span>${duration} days</span></p>
+                    <p><strong>Travel Dates:</strong> <span>${formatDate(currentBooking.travel.startDate)} - ${formatDate(currentBooking.travel.endDate)}</span></p>
+                    <p><strong>Total Guests:</strong> <span>${totalGuests} (${currentBooking.travel.adults} adults, ${currentBooking.travel.children || 0} children)</span></p>
                 </div>
                 <div class="summary-section">
                     <h3>Vehicle Details</h3>
-                    <p><strong>Vehicle Type:</strong> ${formatVehicleType(currentBooking.vehicle?.vehicle)}</p>
-                    <p><strong>Additional Services:</strong> ${formatServices(currentBooking.vehicle?.additionalOptions)}</p>
-                    <p><strong>Total Cost:</strong> ₹${currentBooking.vehicle?.totalPrice || 0}</p>
+                    <p><strong>Vehicle Type:</strong> <span>${capitalizeFirstLetter(currentBooking.preferences.vehicle)}</span></p>
                 </div>
             `;
         }
     }
 }
 
+function calculateDuration(startDate, endDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const diffTime = Math.abs(end - start);
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+}
+
 function formatDate(dateString) {
-    if (!dateString) return 'N/A';
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
 }
 
-function formatVehicleType(type) {
-    if (!type) return 'N/A';
-    const types = {
-        economy: 'Economy Car',
-        suv: 'SUV',
-        luxury: 'Luxury Car',
-        van: 'Passenger Van'
-    };
-    return types[type] || type;
-}
-
-function formatServices(services = []) {
-    if (!services || !services.length) return 'None';
-    const serviceNames = {
-        driver: 'Professional Driver',
-        gps: 'GPS Navigation',
-        'child-seat': 'Child Seat',
-        insurance: 'Extra Insurance'
-    };
-    return services.map(service => serviceNames[service] || service).join(', ');
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 // Make functions available globally
@@ -740,3 +731,66 @@ emptyStateStyles.textContent = `
     }
 `;
 document.head.appendChild(emptyStateStyles);
+
+// Download Itinerary Function
+function downloadItinerary() {
+    const bookingReference = localStorage.getItem('currentBookingReference');
+    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    const currentBooking = bookings.find(booking => booking.bookingReference === bookingReference);
+
+    if (!currentBooking) {
+        alert('Booking information not found.');
+        return;
+    }
+
+    // Create itinerary content
+    const itineraryContent = `
+Tour & Travel - Booking Itinerary
+================================
+
+Booking Reference: ${bookingReference}
+Date: ${new Date().toLocaleDateString()}
+
+Personal Details:
+---------------
+Name: ${currentBooking.personal.fullName}
+Email: ${currentBooking.personal.email}
+Phone: ${currentBooking.personal.phone}
+
+Travel Details:
+-------------
+Duration: ${calculateDuration(currentBooking.travel.startDate, currentBooking.travel.endDate)} days
+Start Date: ${formatDate(currentBooking.travel.startDate)}
+End Date: ${formatDate(currentBooking.travel.endDate)}
+Total Guests: ${parseInt(currentBooking.travel.adults) + parseInt(currentBooking.travel.children || 0)}
+- Adults: ${currentBooking.travel.adults}
+- Children: ${currentBooking.travel.children || 0}
+
+Vehicle Details:
+--------------
+Type: ${capitalizeFirstLetter(currentBooking.preferences.vehicle)}
+
+Office Details:
+-------------
+Tour & Travel Main Office
+42, M.G. Road, Bangalore
+Karnataka - 560001
+Operating Hours: Mon-Fri 9:00 AM - 6:00 PM
+    `;
+
+    // Create blob and download
+    const blob = new Blob([itineraryContent], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `booking-${bookingReference}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+}
+
+// Print Booking Function
+function printBooking() {
+    window.print();
+}

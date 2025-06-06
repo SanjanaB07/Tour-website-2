@@ -1,88 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Destinations - Discover India</title>
     <link rel="stylesheet" href="./places.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 </head>
 <body>
-<section class="packages" id="packages">
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-mountain"></i>
+            Discover India
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link active">Destinations</a>
+        </div>
+        <div class="auth-buttons">
+            <button onclick="window.location.href='login.html'" class="auth-btn login-btn">
+                <i class="fas fa-user"></i> Login
+            </button>
+            <button onclick="window.location.href='register.html'" class="auth-btn register-btn">
+                <i class="fas fa-user-plus"></i> Register
+            </button>
+        </div>
+    </nav>
 
-    <h1 class="heading">popular packages</h1>
+    <header class="destinations-header">
+        <h1>Popular Destinations</h1>
+        <p>Explore the most breathtaking locations across India</p>
+    </header>
 
     <div class="box-container">
-
         <div class="box">
             <div class="image">
-                <img src="img/img-1.jpg" alt="">
+                <img src="img/img-1.jpg" alt="Manali">
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Himachal Pradesh
+                </div>
             </div>
             <div class="content">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>4.5/5</span>
+                </div>
                 <h3>Manali Package</h3>
                 <p>Kullu Manali Shimla has always been a very popular destination for the old, young travelers as well as newly married couples who look for cheapest Manali tour packages & Manali Honeymoon Packages to experience the perfect solitude and calmness at its best.</p>
-                <div class="price">Rs 5,999 - Rs 8,999</div>
-                <a href="contact.html" class="btn">Booking and Feedback</a>
+                <div class="price-row">
+                    <div class="price">₹5,999 - ₹8,999</div>
+                    <div class="duration"><i class="far fa-clock"></i> 5-7 Days</div>
+                </div>
+                <div class="buttons">
+                    <a href="booking-step1.html" class="btn book-btn">
+                        <i class="fas fa-ticket-alt"></i> Book Now
+                    </a>
+                    <a href="#" class="btn details-btn">
+                        <i class="fas fa-info-circle"></i> Details
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="box">
             <div class="image">
-                <img src="img/img-2.jpg" alt="">
+                <img src="img/img-2.jpg" alt="Goa">
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Goa
+                </div>
             </div>
             <div class="content">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>5/5</span>
+                </div>
                 <h3>Goa Package</h3>
-                <p>The most popular beach of Goa, Baga is located close to Calangute beach, around 30 Km North of Panaji. Baga is popular for its nightlife with some very famous clubs such as Brittos, Titos and Mambos.There is also a range of water sports that you can try your hands at.</p>
-                <div class="price">Rs 7,999 - Rs 12,999</div>
-                <a href="contact.html" class="btn">Booking and Feedback</a>
+                <p>The most popular beach of Goa, Baga is located close to Calangute beach, around 30 Km North of Panaji. Baga is popular for its nightlife with some very famous clubs such as Brittos, Titos and Mambos. There is also a range of water sports that you can try your hands at.</p>
+                <div class="price-row">
+                    <div class="price">₹7,999 - ₹12,999</div>
+                    <div class="duration"><i class="far fa-clock"></i> 4-6 Days</div>
+                </div>
+                <div class="buttons">
+                    <a href="booking-step1.html" class="btn book-btn">
+                        <i class="fas fa-ticket-alt"></i> Book Now
+                    </a>
+                    <a href="#" class="btn details-btn">
+                        <i class="fas fa-info-circle"></i> Details
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="box">
             <div class="image">
-                <img src="img/img-3.jpg" alt="">
+                <img src="img/img-3.jpg" alt="Delhi">
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Delhi NCR
+                </div>
             </div>
             <div class="content">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>4.5/5</span>
+                </div>
                 <h3>Delhi Package</h3>
                 <p>Boasting cultural diversity and rich heritage, Delhi is home to several temples, tombs, gardens, forts, museums, markets and more. We take you to some of the best spots in the city. Pick the best packages from here and enjoy the tour of Delhi with guide.</p>
-                <div class="price">Rs 2,999 - Rs 8,999</div>
-                <a href="contact.html" class="btn">Booking and Feedback</a>
+                <div class="price-row">
+                    <div class="price">₹2,999 - ₹8,999</div>
+                    <div class="duration"><i class="far fa-clock"></i> 3-5 Days</div>
+                </div>
+                <div class="buttons">
+                    <a href="booking-step1.html" class="btn book-btn">
+                        <i class="fas fa-ticket-alt"></i> Book Now
+                    </a>
+                    <a href="#" class="btn details-btn">
+                        <i class="fas fa-info-circle"></i> Details
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="box">
             <div class="image">
-                <img src="img/img-4.jpg" alt="">
+                <img src="img/img-4.jpg" alt="Jaipur">
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Rajasthan
+                </div>
             </div>
             <div class="content">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>5/5</span>
+                </div>
                 <h3>Jaipur Package</h3>
-                <p>We organise Jaipur & Rajasthan tours that offer incredible attractions like Forts and Palaces, Deserts, Traditional Villages, colorful cattle fairs, sacred places, camel safaris, beautiful lakes, hill stations and the people. </p>
-                <div class="price">Rs 11,999 - Rs15,999</div>
-                <a href="contact.html" class="btn">Booking and Feedback</a>
+                <p>We organise Jaipur & Rajasthan tours that offer incredible attractions like Forts and Palaces, Deserts, Traditional Villages, colorful cattle fairs, sacred places, camel safaris, beautiful lakes, hill stations and the people.</p>
+                <div class="price-row">
+                    <div class="price">₹11,999 - ₹15,999</div>
+                    <div class="duration"><i class="far fa-clock"></i> 6-8 Days</div>
+                </div>
+                <div class="buttons">
+                    <a href="booking-step1.html" class="btn book-btn">
+                        <i class="fas fa-ticket-alt"></i> Book Now
+                    </a>
+                    <a href="#" class="btn details-btn">
+                        <i class="fas fa-info-circle"></i> Details
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="box">
             <div class="image">
-                <img src="img/img-5.jpg" alt="">
+                <img src="img/img-5.jpg" alt="Kerala">
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Kerala
+                </div>
             </div>
             <div class="content">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>4.5/5</span>
+                </div>
                 <h3>Kerala Package</h3>
-                <p>A trip to Kerala is always an experience through greenery to the hills and its climate. Browse through our hand-picked Kerala tour packages prepared for you. Our experts are also available to prepare customised tourism packages</p>
-                <div class="price">Rs 4,999 - Rs 9,999</div>
-                <a href="contact.html" class="btn">Booking and Feedback</a>
+                <p>A trip to Kerala is always an experience through greenery to the hills and its climate. Browse through our hand-picked Kerala tour packages prepared for you. Our experts are also available to prepare customised tourism packages.</p>
+                <div class="price-row">
+                    <div class="price">₹4,999 - ₹9,999</div>
+                    <div class="duration"><i class="far fa-clock"></i> 5-7 Days</div>
+                </div>
+                <div class="buttons">
+                    <a href="booking-step1.html" class="btn book-btn">
+                        <i class="fas fa-ticket-alt"></i> Book Now
+                    </a>
+                    <a href="#" class="btn details-btn">
+                        <i class="fas fa-info-circle"></i> Details
+                    </a>
+                </div>
             </div>
         </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="img/img-6.jpg" alt="">
-            </div>
-            <div class="content">
-                <h3>Darjeeling</h3>
-                <p>A trip to Darjeeling will include a ride on the famous Himalayan Railway, a visit to Tiger Hill, or a tour of the stunning landscaped gardens here. Activities like hiking and boating. Do not miss out on a trip to Darjeeling Is famous Mall Road</p>
-                <div class="price">Rs 20,000 - Rs 25,000</div>
-                <a href="contact.html" class="btn">Booking and Feedback</a>
-            </div>
-        </div>
-
     </div>
 
-</section>
+    <!-- Modal Structure -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Destination details data
+        const destinationDetails = {
+            'manali': {
+                title: 'Manali Adventure Package',
+                description: 'Discover the magic of the Himalayas in Manali, where adventure meets serenity. This package combines thrilling outdoor activities with peaceful mountain experiences, making it perfect for both adventure enthusiasts and nature lovers.',
+                highlights: [
+                    'Scenic views of the Himalayas',
+                    'Adventure sports activities',
+                    'Local cultural experiences',
+                    'Traditional Himachali cuisine'
+                ],
+                agenda: [
+                    {
+                        day: 'Day 1',
+                        activities: [
+                            'Arrival and check-in at luxury mountain resort',
+                            'Welcome dinner with traditional Himachali dishes',
+                            'Evening bonfire with local music'
+                        ]
+                    },
+                    {
+                        day: 'Day 2',
+                        activities: [
+                            'Visit to Hadimba Temple and Old Manali',
+                            'Local market exploration',
+                            'River rafting session (optional)'
+                        ]
+                    },
+                    {
+                        day: 'Day 3',
+                        activities: [
+                            'Solang Valley excursion',
+                            'Paragliding opportunity',
+                            'Snow activities (seasonal)'
+                        ]
+                    },
+                    {
+                        day: 'Day 4',
+                        activities: [
+                            'Trek to nearby waterfall',
+                            'Picnic lunch in nature',
+                            'Evening spa session'
+                        ]
+                    }
+                ],
+                includes: [
+                    'Luxury accommodation',
+                    'Daily breakfast and dinner',
+                    'All transfers and sightseeing',
+                    'Adventure sports equipment',
+                    'Professional guides'
+                ]
+            },
+            'goa': {
+                title: 'Goa Beach & Culture Package',
+                description: 'Experience the perfect blend of relaxation and excitement in Goa. From golden beaches to historic Portuguese architecture, this package offers the best of both worlds - lazy beach days and vibrant nightlife, all while exploring rich cultural heritage.',
+                highlights: [
+                    'Beautiful beaches and water sports',
+                    'Portuguese heritage sites',
+                    'Vibrant nightlife',
+                    'Seafood specialties'
+                ],
+                agenda: [
+                    {
+                        day: 'Day 1',
+                        activities: [
+                            'Beachside resort check-in',
+                            'Welcome cocktail session',
+                            'Sunset cruise with dinner'
+                        ]
+                    },
+                    {
+                        day: 'Day 2',
+                        activities: [
+                            'Water sports at Baga Beach',
+                            'Visit to Anjuna Flea Market',
+                            'Evening at famous beach shacks'
+                        ]
+                    },
+                    {
+                        day: 'Day 3',
+                        activities: [
+                            'Old Goa churches tour',
+                            'Spice plantation visit with lunch',
+                            'Party at popular club'
+                        ]
+                    }
+                ],
+                includes: [
+                    'Beach resort accommodation',
+                    'Daily breakfast',
+                    'Airport transfers',
+                    'Water sports activities',
+                    'Party entry passes'
+                ]
+            },
+            'delhi': {
+                title: 'Delhi Heritage Tour Package',
+                description: 'Experience the perfect blend of Old and New Delhi through this carefully curated heritage tour. From ancient monuments to modern attractions, immerse yourself in the rich history and vibrant culture of India\'s capital city.',
+                highlights: [
+                    'Historical monuments',
+                    'Cultural experiences',
+                    'Food trails',
+                    'Modern Delhi exploration'
+                ],
+                agenda: [
+                    {
+                        day: 'Day 1',
+                        activities: [
+                            'Red Fort and Chandni Chowk tour',
+                            'Old Delhi food trail',
+                            'Evening light show'
+                        ]
+                    },
+                    {
+                        day: 'Day 2',
+                        activities: [
+                            'Qutub Minar and Humayun Tomb visit',
+                            'Lunch at heritage restaurant',
+                            'India Gate evening visit'
+                        ]
+                    },
+                    {
+                        day: 'Day 3',
+                        activities: [
+                            'Akshardham Temple tour',
+                            'Shopping at Connaught Place',
+                            'Cultural performance'
+                        ]
+                    }
+                ],
+                includes: [
+                    'Luxury hotel stay',
+                    'Daily breakfast',
+                    'Air-conditioned transport',
+                    'Professional guide',
+                    'Monument entry fees'
+                ]
+            },
+            'jaipur': {
+                title: 'Royal Jaipur Experience',
+                description: 'Step into the royal heritage of Rajasthan in the Pink City of Jaipur. This carefully crafted package lets you experience the grandeur of Rajasthani royalty, traditional crafts, and authentic cultural experiences in the heart of the desert state.',
+                highlights: [
+                    'Magnificent palaces and forts',
+                    'Royal Rajasthani culture',
+                    'Traditional art and crafts',
+                    'Desert experiences'
+                ],
+                agenda: [
+                    {
+                        day: 'Day 1',
+                        activities: [
+                            'Amber Fort tour with elephant ride',
+                            'City Palace visit',
+                            'Traditional puppet show'
+                        ]
+                    },
+                    {
+                        day: 'Day 2',
+                        activities: [
+                            'Hawa Mahal and Jantar Mantar',
+                            'Craft workshop experience',
+                            'Royal dinner experience'
+                        ]
+                    },
+                    {
+                        day: 'Day 3',
+                        activities: [
+                            'Local market tour',
+                            'Block printing workshop',
+                            'Folk music and dance'
+                        ]
+                    }
+                ],
+                includes: [
+                    'Heritage hotel accommodation',
+                    'All meals included',
+                    'Luxury vehicle',
+                    'Expert guide',
+                    'Cultural activities'
+                ]
+            },
+            'kerala': {
+                title: 'Kerala Backwaters Paradise',
+                description: 'Immerse yourself in the tranquil beauty of God\'s Own Country. From serene backwaters to misty hill stations, this package offers a perfect blend of relaxation and natural beauty, complemented by authentic Kerala experiences.',
+                highlights: [
+                    'Houseboat experience',
+                    'Ayurvedic treatments',
+                    'Tea plantations',
+                    'Beach relaxation'
+                ],
+                agenda: [
+                    {
+                        day: 'Day 1',
+                        activities: [
+                            'Arrival at Cochin',
+                            'Fort Kochi heritage walk',
+                            'Kathakali performance'
+                        ]
+                    },
+                    {
+                        day: 'Day 2',
+                        activities: [
+                            'Munnar tea plantations',
+                            'Spice garden visit',
+                            'Traditional dance show'
+                        ]
+                    },
+                    {
+                        day: 'Day 3',
+                        activities: [
+                            'Houseboat check-in',
+                            'Backwater cruise',
+                            'Fresh seafood dinner'
+                        ]
+                    },
+                    {
+                        day: 'Day 4',
+                        activities: [
+                            'Ayurvedic spa session',
+                            'Beach relaxation',
+                            'Sunset boat ride'
+                        ]
+                    }
+                ],
+                includes: [
+                    'Mix of resort and houseboat stay',
+                    'All meals included',
+                    'Private transfers',
+                    'Ayurvedic treatment',
+                    'Cultural shows'
+                ]
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('detailsModal');
+        const closeBtn = document.querySelector('.close-btn');
+        const modalContent = document.getElementById('modalContent');
+
+        // Close modal when clicking the close button
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Function to show destination details
+        function showDetails(destination) {
+            const details = destinationDetails[destination];
+            if (!details) return;
+
+            let content = `
+                <h2>${details.title}</h2>
+                <div class="details-section description">
+                    <p>${details.description}</p>
+                </div>
+                <div class="details-section">
+                    <h3>Highlights</h3>
+                    <ul>
+                        ${details.highlights.map(highlight => `<li>${highlight}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="details-section">
+                    <h3>Detailed Itinerary</h3>
+                    ${details.agenda.map(day => `
+                        <div class="day-schedule">
+                            <h4>${day.day}</h4>
+                            <ul>
+                                ${day.activities.map(activity => `<li>${activity}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="details-section">
+                    <h3>Package Includes</h3>
+                    <ul>
+                        ${details.includes.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+
+            modalContent.innerHTML = content;
+            modal.style.display = "block";
+        }
+
+        // Add click handlers to all details buttons
+        document.querySelectorAll('.details-btn').forEach((btn, index) => {
+            const destinations = ['manali', 'goa', 'delhi', 'jaipur', 'kerala'];
+            btn.onclick = function(e) {
+                e.preventDefault();
+                showDetails(destinations[index]);
+            }
+        });
+    </script>
 </body>
+</html>

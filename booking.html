@@ -52,11 +52,33 @@
     </div>
 
     <script>
-        // Clear any existing booking data when starting fresh
         document.addEventListener('DOMContentLoaded', () => {
             const startBtn = document.querySelector('.start-booking-btn');
-            startBtn.addEventListener('click', () => {
-                localStorage.removeItem('bookingData');
+            
+            startBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Get contact info if available
+                const contactInfo = JSON.parse(localStorage.getItem('contactInfo') || '{}');
+                
+                // Initialize booking data with contact info
+                const bookingData = {
+                    personal: {
+                        fullName: contactInfo.name || '',
+                        email: contactInfo.email || '',
+                        phone: '',
+                        address: ''
+                    }
+                };
+                
+                // Save initial booking data
+                localStorage.setItem('bookingData', JSON.stringify(bookingData));
+                
+                // Clear contact info as it's no longer needed
+                localStorage.removeItem('contactInfo');
+                
+                // Redirect to first booking step
+                window.location.href = 'booking-step1.html';
             });
         });
     </script>

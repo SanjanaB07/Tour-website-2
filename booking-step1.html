@@ -3,259 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your dream tour - Start by providing your personal details">
+    <meta name="keywords" content="tour booking, travel, personal details, reservation">
     <title>Book Your Tour - Personal Details</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./booking-steps.css">
+    <script src="https://kit.fontawesome.com/0e53af926d.js" crossorigin="anonymous"></script>
     <style>
-        .form-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
+        /* Additional styles for better organization */
         .form-section {
-            margin-bottom: 2rem;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .form-section h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e7e7e7;
         }
 
-        .form-group label {
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
+            margin-bottom: 8px;
+            color: #34495e;
             font-weight: 500;
         }
 
-        .form-group input {
+        .input-group input,
+        .input-group select {
             width: 100%;
-            padding: 0.8rem;
+            padding: 12px;
             border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
         }
 
-        .form-group input:focus {
-            border-color: #8B4513;
+        .input-group input:focus,
+        .input-group select:focus {
+            border-color: #3498db;
             outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
 
-        .form-group .error {
-            color: #dc3545;
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
+        .input-group .hint {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: 5px;
             display: none;
         }
 
-        .progress-bar {
+        .terms-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .terms-section label {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .progress-step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 30px;
-            height: 30px;
-            background-color: #ddd;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 0.5rem;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .step-number.active {
-            background-color: #8B4513;
-        }
-
-        .step-label {
-            color: #666;
-            font-size: 0.875rem;
-        }
-
-        .step-label.active {
-            color: #8B4513;
-            font-weight: 500;
-        }
-
-        .navigation-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-        .btn {
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 4px;
+            align-items: flex-start;
+            gap: 10px;
             cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.3s;
         }
 
-        .btn-primary {
-            background-color: #8B4513;
-            color: white;
+        .terms-section input[type="checkbox"] {
+            margin-top: 4px;
         }
 
-        .btn-primary:hover {
-            background-color: #6d3710;
+        .form-navigation {
+            margin-top: 30px;
+            display: flex;
+            justify-content: flex-end;
         }
 
         .required-field::after {
-            content: "*";
-            color: #dc3545;
+            content: '*';
+            color: #e74c3c;
             margin-left: 4px;
+        }
+
+        .phone-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .phone-group select {
+            width: 120px;
+        }
+
+        .phone-group input {
+            flex: 1;
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <div class="progress-bar">
-            <div class="progress-step">
-                <div class="step-number active">1</div>
-                <div class="step-label active">DETAILS</div>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="booking-header">
+            <h1>Book Your Dream Tour</h1>
+            <p class="header-subtitle">Start your journey with us</p>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="booking-progress">
+            <div class="progress-step active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-text">Personal Info</div>
+                <div class="step-description">Contact Details</div>
             </div>
-            <div class="progress-step">
+            <div class="progress-step" data-step="2">
                 <div class="step-number">2</div>
-                <div class="step-label">PLANS</div>
+                <div class="step-text">Travel Details</div>
+                <div class="step-description">Dates & Group</div>
             </div>
-            <div class="progress-step">
+            <div class="progress-step" data-step="3">
                 <div class="step-number">3</div>
-                <div class="step-label">PREFERENCES</div>
+                <div class="step-text">Choose Vehicle</div>
+                <div class="step-description">Transport Options</div>
             </div>
-            <div class="progress-step">
+            <div class="progress-step" data-step="4">
                 <div class="step-number">4</div>
-                <div class="step-label">CONFIRM</div>
+                <div class="step-text">Confirmation</div>
+                <div class="step-description">Review & Book</div>
             </div>
         </div>
 
-        <h1>Personal Details</h1>
-        
-        <form id="personalDetailsForm" onsubmit="return validateAndProceed(event)">
-            <div class="form-section">
-                <div class="form-group">
-                    <label for="fullName" class="required-field">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" required
-                           placeholder="Enter your full name">
-                    <div class="error" id="fullNameError">Please enter your full name</div>
+        <!-- Main Form Section -->
+        <main class="form-container">
+            <form id="personalDetailsForm">
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                    <div class="input-group">
+                        <label for="fullName" class="required-field">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required
+                               placeholder="Enter your full name"
+                               pattern="[A-Za-z ]{2,50}"
+                               title="Please enter a valid name (2-50 characters, letters only)">
+                        <div class="hint">As per your official ID</div>
+                        <div class="error-message" id="nameError">Please enter a valid name</div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email" class="required-field">Email Address</label>
-                    <input type="email" id="email" name="email" required
-                           placeholder="Enter your email address">
-                    <div class="error" id="emailError">Please enter a valid email address</div>
+                <!-- Contact Information Section -->
+                <div class="form-section">
+                    <h3><i class="fas fa-address-card"></i> Contact Information</h3>
+                    <div class="input-group">
+                        <label for="email" class="required-field">Email Address</label>
+                        <input type="email" id="email" name="email" required
+                               placeholder="Enter your email address">
+                        <div class="hint">We'll send booking confirmation here</div>
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="phone" class="required-field">Phone Number</label>
+                        <div class="phone-group">
+                            <select id="phoneCountry" name="phoneCountry">
+                                <option value="+91">+91 (IN)</option>
+                                <option value="+1">+1 (US/CA)</option>
+                                <option value="+44">+44 (UK)</option>
+                                <option value="+61">+61 (AU)</option>
+                                <option value="+65">+65 (SG)</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone" required
+                                   placeholder="Enter your phone number">
+                        </div>
+                        <div class="hint">Format: XXXXX XXXXX</div>
+                        <div class="error-message" id="phoneError">Please enter a valid 10-digit phone number</div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="address" class="required-field">Address</label>
+                        <input type="text" id="address" name="address" required
+                               placeholder="Enter your full address">
+                        <div class="hint">Your current residential address</div>
+                        <div class="error-message" id="addressError">Please enter your address</div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="phone" class="required-field">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required
-                           pattern="[0-9]{10}"
-                           placeholder="Enter your 10-digit phone number">
-                    <div class="error" id="phoneError">Please enter a valid 10-digit phone number</div>
+                <!-- Terms and Conditions Section -->
+                <div class="terms-section">
+                    <label>
+                        <input type="checkbox" id="termsAccept" name="termsAccept" required>
+                        <span>
+                            I agree to the <a href="#" target="_blank">Terms & Conditions</a> and 
+                            <a href="#" target="_blank">Privacy Policy</a>. I understand that my personal 
+                            information will be processed according to the Privacy Policy.
+                        </span>
+                    </label>
+                    <div class="error-message" id="termsError">Please accept the terms and conditions</div>
                 </div>
 
-                <div class="form-group">
-                    <label for="address" class="required-field">Address</label>
-                    <input type="text" id="address" name="address" required
-                           placeholder="Enter your address">
-                    <div class="error" id="addressError">Please enter your address</div>
+                <!-- Form Navigation -->
+                <div class="form-navigation">
+                    <button type="submit" class="btn btn-primary">
+                        Next Step <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <!-- Help Section -->
+        <aside class="help-section">
+            <div class="help-card">
+                <i class="fas fa-headset"></i>
+                <h3>Need Help?</h3>
+                <p>Our travel experts are here to assist you</p>
+                <div class="help-links">
+                    <a href="tel:+1234567890" class="help-link">
+                        <i class="fas fa-phone"></i> Call Us
+                    </a>
+                    <a href="mailto:support@tourtravel.com" class="help-link">
+                        <i class="fas fa-envelope"></i> Email Support
+                    </a>
+                    <a href="#" class="help-link" id="openChat">
+                        <i class="fas fa-comments"></i> Live Chat
+                    </a>
                 </div>
             </div>
-
-            <div class="navigation-buttons">
-                <button type="submit" class="btn btn-primary">Next Step</button>
-            </div>
-        </form>
+        </aside>
     </div>
 
-    <script>
-        // Clear all previous booking data when starting new booking
-        window.addEventListener('DOMContentLoaded', () => {
-            // Clear all booking related data
-            localStorage.removeItem('personalDetails');
-            localStorage.removeItem('travelDetails');
-            localStorage.removeItem('vehicleSelection');
-            localStorage.removeItem('agenda');
-            localStorage.removeItem('currentBookingReference');
-        });
-
-        function validateAndProceed(event) {
-            event.preventDefault();
-            
-            // Reset errors
-            document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
-            
-            let isValid = true;
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const address = document.getElementById('address').value.trim();
-
-            // Validate full name
-            if (!fullName) {
-                document.getElementById('fullNameError').style.display = 'block';
-                isValid = false;
-            }
-
-            // Validate email
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                document.getElementById('emailError').style.display = 'block';
-                isValid = false;
-            }
-
-            // Validate phone
-            if (!phone || !/^[0-9]{10}$/.test(phone)) {
-                document.getElementById('phoneError').style.display = 'block';
-                isValid = false;
-            }
-
-            // Validate address
-            if (!address) {
-                document.getElementById('addressError').style.display = 'block';
-                isValid = false;
-            }
-
-            if (isValid) {
-                // Save to localStorage
-                const personalDetails = {
-                    name: fullName,
-                    email: email,
-                    phone: phone,
-                    address: address
-                };
-                localStorage.setItem('personalDetails', JSON.stringify(personalDetails));
-                
-                // Proceed to next step
-                window.location.href = 'booking-step2.html';
-            }
-
-            return false;
-        }
-
-        // Load saved data if exists
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedDetails = JSON.parse(localStorage.getItem('personalDetails') || '{}');
-            if (savedDetails.name) document.getElementById('fullName').value = savedDetails.name;
-            if (savedDetails.email) document.getElementById('email').value = savedDetails.email;
-            if (savedDetails.phone) document.getElementById('phone').value = savedDetails.phone;
-            if (savedDetails.address) document.getElementById('address').value = savedDetails.address;
-        });
-    </script>
+    <script src="./js/booking-step1.js"></script>
 </body>
 </html> 

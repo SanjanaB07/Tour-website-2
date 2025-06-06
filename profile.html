@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <title>My Profile - Discover India</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Discover India</div>
+        <div class="auth-buttons">
+            <!-- Will be populated by JavaScript -->
+        </div>
+    </nav>
+    
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <i class="fas fa-user-circle profile-icon"></i>
+                <h2 id="userName">Loading...</h2>
+                <p id="userEmail">Loading...</p>
+            </div>
+            
+            <div class="trip-history">
+                <h3>My Trip History</h3>
+                <div id="tripList">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = checkAuth();
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Update user information
+            document.getElementById('userName').textContent = user.fullName;
+            document.getElementById('userEmail').textContent = user.email;
+
+            // Display trip history
+            const tripList = document.getElementById('tripList');
+            if (user.tripHistory && user.tripHistory.length > 0) {
+                tripList.innerHTML = user.tripHistory.map(trip => `
+                    <div class="trip-item">
+                        <h4>${trip.destination}</h4>
+                        <p class="trip-date">${new Date(trip.date).toLocaleDateString()}</p>
+                        <p class="trip-details">${trip.package}</p>
+                    </div>
+                `).join('');
+            } else {
+                tripList.innerHTML = '<p class="no-trips">No trips booked yet.</p>';
+            }
+        });
+    </script>
+</body>
+</html> 

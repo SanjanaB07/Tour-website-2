@@ -2,284 +2,263 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choose Your Vehicle - Tour & Travel</title>
-    <link rel="stylesheet" href="./contact.css">
-    <script src="https://kit.fontawesome.com/0e53af926d.js" crossorigin="anonymous"></script>
+    <title>Choose Your Vehicle - Discover India</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="./booking.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Progress Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-mountain"></i>
+            Discover India
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="places.html" class="nav-link">Destinations</a>
+        </div>
+    </nav>
+
+    <div class="booking-container">
         <div class="booking-progress">
-            <a href="booking-step1.html" class="progress-step completed" data-step="1">
-                <div class="step-number">1</div>
-                <div class="step-text"></div>
-            </a>
-            <a href="booking-step2.html" class="progress-step completed" data-step="2">
-                <div class="step-number">2</div>
-                <div class="step-text"></div>
-            </a>
-            <div class="progress-step active" data-step="3">
-                <div class="step-number">3</div>
-                <div class="step-text"></div>
+            <div class="progress-step completed">
+                <div class="step-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="step-label">
+                    <h3>Personal Info</h3>
+                    <p>Contact Details</p>
+                </div>
             </div>
-            <div class="progress-step" data-step="4">
-                <div class="step-number">4</div>
-                <div class="step-text"></div>
+            <div class="progress-step completed">
+                <div class="step-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="step-label">
+                    <h3>Travel Details</h3>
+                    <p>Dates & Group</p>
+                </div>
+            </div>
+            <div class="progress-step active">
+                <div class="step-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="step-label">
+                    <h3>Choose Vehicle</h3>
+                    <p>Transport Options</p>
+                </div>
+            </div>
+            <div class="progress-step">
+                <div class="step-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="step-label">
+                    <h3>Confirmation</h3>
+                    <p>Review & Book</p>
+                </div>
             </div>
         </div>
 
-        <!-- Vehicle Selection Form -->
-        <div class="vehicle-selection-container">
-            <h1>Choose Your Vehicle</h1>
-            <p class="selection-intro">Select the perfect vehicle for your journey based on your group size and comfort preferences.</p>
+        <div class="booking-form">
+            <div class="section-header">
+                <h2>Choose Your Vehicle</h2>
+                <p class="section-description">Select the perfect vehicle for your journey based on your group size and comfort preferences.</p>
+            </div>
 
-            <form id="vehicleForm" class="vehicle-form">
-                <div class="vehicle-grid">
-                    <!-- Economy Car -->
-                    <div class="vehicle-card">
-                        <input type="radio" name="vehicle" id="economy" value="economy" class="vehicle-radio">
-                        <label for="economy" class="vehicle-label">
-                            <div class="vehicle-icon">
-                                <i class="fas fa-car"></i>
-                            </div>
-                            <div class="vehicle-info">
-                                <h3>Economy Car</h3>
-                                <p class="vehicle-description">Perfect for small groups</p>
+            <form id="vehicleSelectionForm">
+                <!-- Vehicle Selection Section -->
+                <div class="section-content">
+                    <h3>Available Vehicles</h3>
+                    <div class="vehicle-grid">
+                        <!-- Economy Car -->
+                        <div class="vehicle-card">
+                            <input type="radio" name="vehicleType" id="economyCar" value="economy" required>
+                            <label for="economyCar" class="vehicle-label">
+                                <div class="vehicle-header">
+                                    <i class="fas fa-car"></i>
+                                    <h4>Economy Car</h4>
+                                    <p>Perfect for small groups</p>
+                                </div>
                                 <ul class="vehicle-features">
                                     <li><i class="fas fa-users"></i> Up to 4 people</li>
                                     <li><i class="fas fa-suitcase"></i> 2 large bags</li>
                                     <li><i class="fas fa-gas-pump"></i> Fuel efficient</li>
                                 </ul>
-                                <div class="vehicle-price">
-                                    <span class="price">₹1,500</span>
-                                    <span class="per-day">per day</span>
-                                </div>
-                            </div>
-                        </label>
-                    </div>
+                                <div class="vehicle-price">₹1,500 per day</div>
+                            </label>
+                        </div>
 
-                    <!-- SUV -->
-                    <div class="vehicle-card">
-                        <input type="radio" name="vehicle" id="suv" value="suv" class="vehicle-radio">
-                        <label for="suv" class="vehicle-label">
-                            <div class="vehicle-icon">
-                                <i class="fas fa-car-side"></i>
-                            </div>
-                            <div class="vehicle-info">
-                                <h3>SUV</h3>
-                                <p class="vehicle-description">Comfortable for families</p>
+                        <!-- SUV -->
+                        <div class="vehicle-card">
+                            <input type="radio" name="vehicleType" id="suv" value="suv">
+                            <label for="suv" class="vehicle-label">
+                                <div class="vehicle-header">
+                                    <i class="fas fa-car-side"></i>
+                                    <h4>SUV</h4>
+                                    <p>Comfortable for families</p>
+                                </div>
                                 <ul class="vehicle-features">
                                     <li><i class="fas fa-users"></i> Up to 6 people</li>
                                     <li><i class="fas fa-suitcase"></i> 4 large bags</li>
                                     <li><i class="fas fa-mountain"></i> All-terrain</li>
                                 </ul>
-                                <div class="vehicle-price">
-                                    <span class="price">₹2,500</span>
-                                    <span class="per-day">per day</span>
-                                </div>
-                            </div>
-                        </label>
-                    </div>
+                                <div class="vehicle-price">₹2,500 per day</div>
+                            </label>
+                        </div>
 
-                    <!-- Luxury Car -->
-                    <div class="vehicle-card">
-                        <input type="radio" name="vehicle" id="luxury" value="luxury" class="vehicle-radio">
-                        <label for="luxury" class="vehicle-label">
-                            <div class="vehicle-icon">
-                                <i class="fas fa-car-alt"></i>
-                            </div>
-                            <div class="vehicle-info">
-                                <h3>Luxury Car</h3>
-                                <p class="vehicle-description">Premium travel experience</p>
+                        <!-- Luxury Car -->
+                        <div class="vehicle-card">
+                            <input type="radio" name="vehicleType" id="luxuryCar" value="luxury">
+                            <label for="luxuryCar" class="vehicle-label">
+                                <div class="vehicle-header">
+                                    <i class="fas fa-car-alt"></i>
+                                    <h4>Luxury Car</h4>
+                                    <p>Premium travel experience</p>
+                                </div>
                                 <ul class="vehicle-features">
                                     <li><i class="fas fa-users"></i> Up to 4 people</li>
-                                    <li><i class="fas fa-star"></i> Premium amenities</li>
-                                    <li><i class="fas fa-concierge-bell"></i> Chauffeur driven</li>
+                                    <li><i class="fas fa-suitcase"></i> 3 large bags</li>
+                                    <li><i class="fas fa-star"></i> Premium features</li>
                                 </ul>
-                                <div class="vehicle-price">
-                                    <span class="price">₹4,000</span>
-                                    <span class="per-day">per day</span>
-                                </div>
-                            </div>
-                        </label>
-                    </div>
+                                <div class="vehicle-price">₹3,500 per day</div>
+                            </label>
+                        </div>
 
-                    <!-- Passenger Van -->
-                    <div class="vehicle-card">
-                        <input type="radio" name="vehicle" id="van" value="van" class="vehicle-radio">
-                        <label for="van" class="vehicle-label">
-                            <div class="vehicle-icon">
-                                <i class="fas fa-shuttle-van"></i>
-                            </div>
-                            <div class="vehicle-info">
-                                <h3>Passenger Van</h3>
-                                <p class="vehicle-description">Ideal for large groups</p>
+                        <!-- Minivan -->
+                        <div class="vehicle-card">
+                            <input type="radio" name="vehicleType" id="minivan" value="minivan">
+                            <label for="minivan" class="vehicle-label">
+                                <div class="vehicle-header">
+                                    <i class="fas fa-shuttle-van"></i>
+                                    <h4>Minivan</h4>
+                                    <p>Perfect for large groups</p>
+                                </div>
                                 <ul class="vehicle-features">
-                                    <li><i class="fas fa-users"></i> Up to 12 people</li>
-                                    <li><i class="fas fa-suitcase"></i> 8 large bags</li>
+                                    <li><i class="fas fa-users"></i> Up to 8 people</li>
+                                    <li><i class="fas fa-suitcase"></i> 6 large bags</li>
                                     <li><i class="fas fa-couch"></i> Extra comfort</li>
                                 </ul>
-                                <div class="vehicle-price">
-                                    <span class="price">₹5,500</span>
-                                    <span class="per-day">per day</span>
-                                </div>
-                            </div>
-                        </label>
+                                <div class="vehicle-price">₹4,000 per day</div>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Additional Options -->
-                <div class="additional-options">
+                <!-- Additional Services Section -->
+                <div class="section-content">
                     <h3>Additional Services</h3>
-                    <div class="options-grid">
-                        <div class="option-item">
-                            <input type="checkbox" id="driver" name="driver">
-                            <label for="driver">
-                                <i class="fas fa-user-tie"></i>
-                                Professional Driver
-                                <span class="option-price">+₹1,000/day</span>
-                            </label>
+                    <p class="section-description">Enhance your journey with our premium add-ons</p>
+                    
+                    <div class="services-grid">
+                        <!-- Driver Service -->
+                        <div class="service-card" onclick="toggleService('driver')">
+                            <div class="service-content">
+                                <div class="service-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h4>Professional Driver</h4>
+                                    <p>Experienced chauffeur service</p>
+                                    <span class="service-price">₹1,500/day</span>
+                                </div>
+                                <input type="checkbox" id="driver" name="additionalServices" value="driver" class="service-checkbox">
+                            </div>
                         </div>
-                        <div class="option-item">
-                            <input type="checkbox" id="gps" name="gps">
-                            <label for="gps">
-                                <i class="fas fa-satellite-dish"></i>
-                                GPS Navigation
-                                <span class="option-price">+₹200/day</span>
-                            </label>
+
+                        <!-- WiFi Service -->
+                        <div class="service-card" onclick="toggleService('wifi')">
+                            <div class="service-content">
+                                <div class="service-icon">
+                                    <i class="fas fa-wifi"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h4>Mobile WiFi</h4>
+                                    <p>Stay connected on the go</p>
+                                    <span class="service-price">₹300/day</span>
+                                </div>
+                                <input type="checkbox" id="wifi" name="additionalServices" value="wifi" class="service-checkbox">
+                            </div>
                         </div>
-                        <div class="option-item">
-                            <input type="checkbox" id="child-seat" name="child-seat">
-                            <label for="child-seat">
-                                <i class="fas fa-baby-carriage"></i>
-                                Child Seat
-                                <span class="option-price">+₹300/day</span>
-                            </label>
+
+                        <!-- Child Seat -->
+                        <div class="service-card" onclick="toggleService('childSeat')">
+                            <div class="service-content">
+                                <div class="service-icon">
+                                    <i class="fas fa-baby-carriage"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h4>Child Seat</h4>
+                                    <p>Safe travel for kids</p>
+                                    <span class="service-price">₹200/day</span>
+                                </div>
+                                <input type="checkbox" id="childSeat" name="additionalServices" value="childSeat" class="service-checkbox">
+                            </div>
                         </div>
-                        <div class="option-item">
-                            <input type="checkbox" id="insurance" name="insurance">
-                            <label for="insurance">
-                                <i class="fas fa-shield-alt"></i>
-                                Extra Insurance
-                                <span class="option-price">+₹500/day</span>
-                            </label>
+
+                        <!-- GPS Navigation -->
+                        <div class="service-card" onclick="toggleService('gps')">
+                            <div class="service-content">
+                                <div class="service-icon">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h4>GPS Navigation</h4>
+                                    <p>Never lose your way</p>
+                                    <span class="service-price">₹150/day</span>
+                                </div>
+                                <input type="checkbox" id="gps" name="additionalServices" value="gps" class="service-checkbox">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Navigation Buttons -->
-                <div class="form-navigation">
+                <!-- Price Summary Section -->
+                <div class="price-summary">
+                    <h3>Price Summary</h3>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Vehicle Charges</span>
+                            <span id="vehiclePrice">₹0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Additional Services</span>
+                            <span id="servicesPrice">₹0</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total Per Day</span>
+                            <span id="totalPrice">₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
                     <a href="booking-step2.html" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Previous
                     </a>
                     <button type="submit" class="btn btn-primary">
-                        Next <i class="fas fa-arrow-right"></i>
+                        Continue <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
             </form>
         </div>
+
+        <!-- Help Section -->
+        <aside class="help-section">
+            <div class="help-card">
+                <i class="fas fa-headset"></i>
+                <h3>Need Help?</h3>
+                <p>Our travel experts are here to assist you</p>
+                <a href="tel:+1234567890" class="help-link">
+                    <i class="fas fa-phone"></i> Call Us
+                </a>
+                <a href="mailto:support@tourtravel.com" class="help-link">
+                    <i class="fas fa-envelope"></i> Email Support
+                </a>
+            </div>
+        </aside>
     </div>
 
-    <script>
-        // Clear previous vehicle selections when loading this step
-        window.addEventListener('DOMContentLoaded', () => {
-            // Clear vehicle and agenda data but keep personal and travel details
-            localStorage.removeItem('vehicleSelection');
-            localStorage.removeItem('agenda');
-
-            // Reset all vehicle selections
-            document.querySelectorAll('.vehicle-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-
-            // Reset all additional services
-            document.querySelectorAll('.service-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-        });
-
-        // Initialize variables
-        let selectedVehicle = null;
-        let selectedServices = [];
-        let totalPrice = 0;
-
-        // Vehicle prices
-        const vehiclePrices = {
-            'economy': 1500,
-            'suv': 2500,
-            'luxury': 4000,
-            'van': 5500
-        };
-
-        // Additional service prices
-        const servicePrices = {
-            'driver': 1000,
-            'gps': 200,
-            'child-seat': 300,
-            'insurance': 500
-        };
-
-        // Add click handlers to vehicle cards
-        document.querySelectorAll('.vehicle-radio').forEach(radio => {
-            radio.addEventListener('change', () => {
-                selectedVehicle = radio.value;
-                updateTotalPrice();
-            });
-        });
-
-        // Add change handlers to additional services
-        document.querySelectorAll('.option-item input[type="checkbox"]').forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                if (checkbox.checked) {
-                    selectedServices.push(checkbox.id);
-                } else {
-                    selectedServices = selectedServices.filter(service => service !== checkbox.id);
-                }
-                updateTotalPrice();
-            });
-        });
-
-        // Update total price
-        function updateTotalPrice() {
-            if (!selectedVehicle) {
-                totalPrice = 0;
-                return;
-            }
-
-            // Base vehicle price
-            totalPrice = vehiclePrices[selectedVehicle];
-
-            // Add additional services
-            selectedServices.forEach(service => {
-                totalPrice += servicePrices[service];
-            });
-        }
-
-        // Form submission handler
-        document.getElementById('vehicleForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Validate vehicle selection
-            if (!selectedVehicle) {
-                alert('Please select a vehicle to continue');
-                return;
-            }
-
-            // Save vehicle selection data
-            const vehicleSelection = {
-                vehicle: selectedVehicle,
-                additionalOptions: selectedServices,
-                totalPrice: totalPrice
-            };
-
-            // Save to localStorage
-            localStorage.setItem('vehicleSelection', JSON.stringify(vehicleSelection));
-
-            // Proceed to next step
-            window.location.href = 'booking-step4.html';
-        });
-    </script>
+    <script src="./js/booking-step3.js"></script>
 </body>
 </html> 
