@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!personalData.name || !travelData.startDate || !vehicleData.vehicle) {
         // If missing required data, redirect to step 1
-        window.location.href = 'booking-step1.html';
+        window.location.href = '/booking-step1.html';
         return;
     }
 
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Booking confirmed! Redirecting to success page...');
 
             // Redirect to success page
-            window.location.replace('booking-success.html');
+            window.location.replace('/booking-success.html');
             return false;
         };
     }
@@ -268,7 +268,7 @@ function confirmBooking() {
 
         // Redirect to success page after a short delay to show the notification
         setTimeout(() => {
-            window.location.href = 'booking-success.html';
+            window.location.href = '/booking-success.html';
         }, 1000);
     } catch (error) {
         showNotification('Error saving booking. Please try again.', 'error');

@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     address: document.getElementById('address').value
                 };
                 localStorage.setItem('bookingData', JSON.stringify(bookingData));
-                window.location.href = 'booking-step2.html';
+                window.location.href = '/booking-step2.html';
             }
         });
     }
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     children: document.getElementById('children').value
                 };
                 localStorage.setItem('bookingData', JSON.stringify(bookingData));
-                window.location.href = 'booking-step3.html';
+                window.location.href = '/booking-step3.html';
             }
         });
     }
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     vehicle: document.querySelector('input[name="vehicle"]:checked').value
                 };
                 localStorage.setItem('bookingData', JSON.stringify(bookingData));
-                window.location.href = 'booking-step4.html';
+                window.location.href = '/booking-step4.html';
             }
         });
     }
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('bookingData');
 
             // Redirect to success page
-            window.location.href = 'booking-success.html';
+            window.location.href = '/booking-success.html';
         });
     }
 });

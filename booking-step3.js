@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('vehicleSelection', JSON.stringify(bookingData));
 
         // Proceed to next step
-        window.location.href = 'booking-step4.html';
+        window.location.href = '/booking-step4.html';
     });
 
     // Add hover effect to vehicle cards
