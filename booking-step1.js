@@ -72,6 +72,7 @@ function validateField(field, showError = false) {
 }
 
 function validateAndProceed(event) {
+    console.log("validateAndProceed called"); // Add this line
     event.preventDefault();
     
     // Reset errors
@@ -117,7 +118,7 @@ function validateAndProceed(event) {
         
         // Proceed to next step after a short delay
         setTimeout(() => {
-            window.location.href = 'booking-step2.html';
+            window.location.href = '/booking-step2.html';
         }, 1000);
     }
 
