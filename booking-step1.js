@@ -1,3 +1,4 @@
+<script src="booking-step1.js" defer></script>
 window.addEventListener('DOMContentLoaded', () => {
     // Do NOT clear booking data here!
     // localStorage.removeItem('personalDetails');
@@ -72,7 +73,7 @@ function validateField(field, showError = false) {
 }
 
 function validateAndProceed(event) {
-    console.log("validateAndProceed called"); // Add this line
+    console.log("validateAndProceed called");
     event.preventDefault();
     
     // Reset errors

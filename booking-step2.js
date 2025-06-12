@@ -162,4 +162,65 @@ window.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         }
     });
+
+    function validateAndProceed() {
+        console.log("validateAndProceed called");
+        // Reset errors
+        document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
+
+        let isValid = true;
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+        const adults = parseInt(document.getElementById('adults').value);
+        const children = parseInt(document.getElementById('children').value);
+        const specialRequests = document.getElementById('specialRequests').value.trim();
+
+        // Validate dates
+        if (!startDate) {
+            document.getElementById('startDateError').style.display = 'block';
+            isValid = false;
+        }
+        if (!endDate) {
+            document.getElementById('endDateError').style.display = 'block';
+            isValid = false;
+        }
+        if (startDate && endDate && new Date(endDate) < new Date(startDate)) {
+            document.getElementById('endDateError').textContent = 'End date must be after start date';
+            document.getElementById('endDateError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validate group size
+        if (!validateGroupSize()) {
+            isValid = false;
+        }
+
+        if (isValid) {
+            // Calculate duration
+            const duration = Math.ceil(
+                (new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)
+            );
+
+            // Save to localStorage
+            const travelDetails = {
+                startDate: startDate,
+                endDate: endDate,
+                duration: duration,
+                adults: adults,
+                children: children,
+                groupSize: adults + children,
+                specialRequests: specialRequests,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('travelDetails', JSON.stringify(travelDetails));
+
+            // Show success message
+            showSuccessMessage();
+
+            // Proceed to next step after a short delay
+            setTimeout(() => {
+                window.location.href = '/booking-step3.html';
+            }, 1000);
+        }
+    }
 });
