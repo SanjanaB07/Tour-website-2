@@ -1,11 +1,10 @@
-// Clear all previous booking data when starting new booking
 window.addEventListener('DOMContentLoaded', () => {
-    // Clear all booking related data
-    localStorage.removeItem('personalDetails');
-    localStorage.removeItem('travelDetails');
-    localStorage.removeItem('vehicleSelection');
-    localStorage.removeItem('agenda');
-    localStorage.removeItem('currentBookingReference');
+    // Do NOT clear booking data here!
+    // localStorage.removeItem('personalDetails');
+    // localStorage.removeItem('travelDetails');
+    // localStorage.removeItem('vehicleSelection');
+    // localStorage.removeItem('agenda');
+    // localStorage.removeItem('currentBookingReference');
 
     // Load saved data if exists
     const savedDetails = JSON.parse(localStorage.getItem('personalDetails') || '{}');
