@@ -144,7 +144,3 @@ function showSuccessMessage() {
 }
 
 document.getElementById('personalDetailsForm').addEventListener('submit', validateAndProceed);
-
-<form id="personalDetailsForm">
-    <button type="submit">Next</button>
-</form>
