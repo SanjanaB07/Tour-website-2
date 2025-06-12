@@ -158,7 +158,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
                 // Proceed to next step after a short delay
                 setTimeout(() => {
-                    window.location.href = 'booking-step3.html';
+                    window.location.href = '/booking-step3.html';
                 }, 1000);
             }
         });
