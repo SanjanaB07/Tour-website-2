@@ -142,5 +142,3 @@ function showSuccessMessage() {
         successMessage.remove();
     }, 3000);
 }
-
-document.getElementById('personalDetailsForm').addEventListener('submit', validateAndProceed);
