@@ -5,12 +5,9 @@ document.getElementById('endDate').min = today;
 
 // Initialize form
 window.addEventListener('DOMContentLoaded', () => {
-    // Clear travel details but keep personal details
-    localStorage.removeItem('travelDetails');
-    localStorage.removeItem('vehicleSelection');
-    localStorage.removeItem('agenda');
-    
-    // Reset form fields
+    // Do NOT clear travel details here!
+
+    // Reset form fields (optional, only if you want to clear on fresh visit)
     document.getElementById('startDate').value = '';
     document.getElementById('endDate').value = '';
     document.getElementById('adults').value = '1';
