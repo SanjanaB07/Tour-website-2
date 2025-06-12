@@ -141,4 +141,10 @@ function showSuccessMessage() {
     setTimeout(() => {
         successMessage.remove();
     }, 3000);
-} 
+}
+
+document.getElementById('personalDetailsForm').addEventListener('submit', validateAndProceed);
+
+<form id="personalDetailsForm">
+    <button type="submit">Next</button>
+</form>
