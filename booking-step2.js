@@ -127,6 +127,7 @@ function validateGroupSize() {
 }
 
 function validateAndProceed(event) {
+     console.log("validateAndProceed called"); // Add this line
     event.preventDefault();
     
     // Reset errors
