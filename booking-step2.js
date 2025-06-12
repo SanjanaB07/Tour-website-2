@@ -213,4 +213,15 @@ function showSuccessMessage() {
     setTimeout(() => {
         successMessage.remove();
     }, 3000);
-} 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const nextBtn = document.querySelector('.next-btn');
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+            // Optionally validate fields here
+            // If valid, go to next page:
+            window.location.href = 'booking-step3.html';
+        });
+    }
+});
